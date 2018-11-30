@@ -16,7 +16,7 @@ echo $BP_DIR
 
 VERSION=stable
 
-if [ -d "$CARGO_HOME" ]; then
+if [ -d "$HOME/.cargo/bin" ]; then
     echo "-----> Checking for new releases of Rust $VERSION channel"
     # It's possible that $VERSION has changed, or the `stable` channel has updated.
     rustup self update
@@ -29,8 +29,9 @@ else
     echo "-----> Using rustup to install Rust channel $VERSION"
     ./rustup.sh -y --default-toolchain "$VERSION"
     rm rustup.sh
+    . $HOME/.cargo/env
 fi
-if [ ! -x "$CARGO_HOME/bin/rustc" ]; then
+if [ ! -x "$HOME/.cargo/bin/rustc" ]; then
     echo "failed: Cannot find Rust binaries at $CARGO_HOME"
     exit 1
 fi
