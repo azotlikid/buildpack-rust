@@ -14,7 +14,7 @@ echo $CACHE_DIR
 echo $ENV_DIR
 echo $BP_DIR
 
-VERSION=stable
+VERSION=nightly
 
 if [ -d "$HOME/.cargo/bin" ]; then
     echo "-----> Checking for new releases of Rust $VERSION channel"
