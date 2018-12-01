@@ -14,11 +14,11 @@ echo "CACHE_DIR:$CACHE_DIR"
 echo "ENV_DIR:$ENV_DIR"
 echo "BP_DIR:$BP_DIR"
 echo "HOME:$HOME"
-echo `ls -a $HOME`
+echo `ls -a $HOME/bin`
 
 VERSION=nightly
 
-if [ -d "$HOME/.cargo/bin" ]; then
+if [ -d "$HOME/bin" ]; then
     echo "-----> Checking for new releases of Rust $VERSION channel"
     # It's possible that $VERSION has changed, or the `stable` channel has updated.
     rustup self update
