@@ -19,7 +19,8 @@ VERSION=nightly
 RUSTUP_HOME=$CACHE_DIR/rustup-$VERSION
 CARGO_HOME=$CACHE_DIR/cargo
 
-export PATH="$RUSTUP_HOME":"$CARGO_HOME":$PATH
+export RUSTUP_HOME=$RUSTUP_HOME
+export CARGO_HOME=$CARGO_HOME
 
 if [ -d "$RUSTUP_HOME" ]; then
     echo "-----> Checking for new releases of Rust $VERSION channel"
@@ -36,8 +37,6 @@ else
     echo "-----> Using rustup to install Rust channel $VERSION"
     RUSTUP_HOME=$RUSTUP_HOME CARGO_HOME=$CARGO_HOME ./rustup.sh -y --default-toolchain "$VERSION"
     rm rustup.sh
-    export RUSTUP_HOME=$RUSTUP_HOME
-    export CARGO_HOME=$CARGO_HOME
 fi
 if [ ! -x "$CARGO_HOME/bin/rustc" ]; then
     echo "failed: Cannot find Rust binaries at $CARGO_HOME"
