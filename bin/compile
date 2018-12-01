@@ -28,7 +28,7 @@ if ! [ -d $CARGO_HOME ]; then
 fi
 
 echo "------>"
-echo `ls -a $CACHE_DIR
+echo `ls -a $CACHE_DIR`
 
 
 if [ -d "$HOME/.cargo/bin" ]; then
