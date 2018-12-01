@@ -14,11 +14,11 @@ echo "CACHE_DIR:$CACHE_DIR"
 echo "ENV_DIR:$ENV_DIR"
 echo "BP_DIR:$BP_DIR"
 echo "HOME:$HOME"
-echo `ls -a $HOME/bin`
+echo `ls -a $HOME`
 
 VERSION=nightly
 
-if [ -d "$HOME/bin" ]; then
+if [ -d "$HOME/.cargo/bin" ]; then
     echo "-----> Checking for new releases of Rust $VERSION channel"
     # It's possible that $VERSION has changed, or the `stable` channel has updated.
     rustup self update
@@ -32,6 +32,8 @@ else
     echo "-----> Using rustup to install Rust channel $VERSION"
     ./rustup.sh -y --default-toolchain "$VERSION"
     rm rustup.sh
+    echo @@@@@@@@@@@@@@@@@"
+    echo `ls $HOME`
     . $HOME/.cargo/env
 fi
 if [ ! -x "$HOME/.cargo/bin/rustc" ]; then
