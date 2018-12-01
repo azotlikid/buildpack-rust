@@ -29,7 +29,7 @@ fi
 
 echo "------>"
 echo "$CACHE_DIR : `ls -a $CACHE_DIR`"
-echo "$CACHE_DIR/cargo: `ls -a $CACHE_DIR/cargo"
+echo "$CACHE_DIR/cargo: `ls -a $CACHE_DIR/cargo`"
 
 
 if [ -d "$HOME/.cargo/bin" ]; then
