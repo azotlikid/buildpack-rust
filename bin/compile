@@ -33,7 +33,7 @@ else
     ./rustup.sh -y --default-toolchain "$VERSION"
     rm rustup.sh
     echo "@@@@@@@@@@@@@@@@@"
-    echo `ls $HOME`
+    echo `ls -a $HOME`
     . $HOME/.cargo/env
 fi
 if [ ! -x "$HOME/.cargo/bin/rustc" ]; then
