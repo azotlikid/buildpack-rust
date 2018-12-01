@@ -19,38 +19,25 @@ VERSION=nightly
 RUSTUP_HOME=$CACHE_DIR/rustup-$VERSION
 CARGO_HOME=$CACHE_DIR/cargo
 
-if ! [ -d $RUSTUP_HOME ]; then
-    mkdir -p $RUSTUP_HOME
-fi
+export PATH="$RUSTUP_HOME":"$CARGO_HOME":$PATH
 
-if ! [ -d $CARGO_HOME ]; then
-    mkdir -p $CARGO_HOME
-fi
-
-echo "------>"
-echo "$CACHE_DIR : `ls -a $CACHE_DIR`"
-echo "$CACHE_DIR/cargo: `ls -a $CACHE_DIR/cargo`"
-
-
-if [ -d "$HOME/.cargo/bin" ]; then
+if [ -d "$RUSTUP_HOME" ]; then
     echo "-----> Checking for new releases of Rust $VERSION channel"
     # It's possible that $VERSION has changed, or the `stable` channel has updated.
     rustup self update
     rustup update "$VERSION"
     rustup default "$VERSION"
 else
-
+    mkdir -p $RUSTUP_HOME
+    cd $RUSTUP_HOME
     echo "-----> Downloading rustup"
     curl https://sh.rustup.rs -sSf > rustup.sh
     chmod u+x rustup.sh
     echo "-----> Using rustup to install Rust channel $VERSION"
-    ./rustup.sh -y --default-toolchain "$VERSION"
+    #./rustup.sh -y --default-toolchain "$VERSION"
     rm rustup.sh
-    echo "@@@@@@@@@@@@@@@@@"
-    echo `ls -a $HOME`
-    . $HOME/.cargo/env
 fi
-if [ ! -x "$HOME/.cargo/bin/rustc" ]; then
+if [ ! -x "$CARGO_HOME/bin/rustc" ]; then
     echo "failed: Cannot find Rust binaries at $CARGO_HOME"
     exit 1
 fi
