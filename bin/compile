@@ -35,6 +35,7 @@ else
     chmod u+x rustup.sh
     echo "-----> Using rustup to install Rust channel $VERSION"
     ./rustup.sh -y --default-toolchain "$VERSION"
+    source $CARGO_HOME/env
     rm rustup.sh
 fi
 if [ ! -x "$CARGO_HOME/bin/rustc" ]; then
