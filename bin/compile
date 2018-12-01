@@ -32,7 +32,7 @@ else
     echo "-----> Using rustup to install Rust channel $VERSION"
     ./rustup.sh -y --default-toolchain "$VERSION"
     rm rustup.sh
-    echo @@@@@@@@@@@@@@@@@"
+    echo "@@@@@@@@@@@@@@@@@"
     echo `ls $HOME`
     . $HOME/.cargo/env
 fi
