@@ -44,6 +44,7 @@ if [ ! -x "$CARGO_HOME/bin/rustc" ]; then
     exit 1
 fi
 
+PATH="$CARGO_HOME/bin:$PATH"
 export CARGO_TARGET_DIR="$CACHE_DIR/target"
 
 echo "-----> Building application using Cargo"
