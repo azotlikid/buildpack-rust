@@ -9,12 +9,11 @@ CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 BP_DIR=$(cd "$(dirname ${0:-})"; cd ..; pwd)
 
-echo "----- Trace ----"
-echo $BUILD_DIR
-echo $CACHE_DIR
-echo $ENV_DIR
-echo $BP_DIR
-echo "----------------"
+echo "BUILD_DIR:$BUILD_DIR"
+echo "CACHE_DIR:$CACHE_DIR"
+echo "ENV_DIR:$ENV_DIR"
+echo "BP_DIR:$BP_DIR"
+echo "HOME:$HOME"
 
 VERSION=nightly
 
@@ -25,6 +24,7 @@ if [ -d "$HOME/.cargo/bin" ]; then
     rustup update "$VERSION"
     rustup default "$VERSION"
 else
+
     echo "-----> Downloading rustup"
     curl https://sh.rustup.rs -sSf > rustup.sh
     chmod u+x rustup.sh
