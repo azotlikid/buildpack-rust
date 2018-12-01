@@ -13,10 +13,23 @@ echo "BUILD_DIR:$BUILD_DIR"
 echo "CACHE_DIR:$CACHE_DIR"
 echo "ENV_DIR:$ENV_DIR"
 echo "BP_DIR:$BP_DIR"
-echo "HOME:$HOME"
-echo `ls -a $HOME`
 
 VERSION=nightly
+
+RUSTUP_HOME=$CACHE_DIR/rustup-$VERSION
+CARGO_HOME=$CACHE_DIR/cargo
+
+if ! [ -d $RUSTUP_HOME ]; then
+    mkdir -p $RUSTUP_HOME
+fi
+
+if ! [ -d $CARGO_HOME ]; then
+    mkdir -p $CARGO_HOME
+fi
+
+echo "------>"
+echo `ls -a $CACHE_DIR
+
 
 if [ -d "$HOME/.cargo/bin" ]; then
     echo "-----> Checking for new releases of Rust $VERSION channel"
