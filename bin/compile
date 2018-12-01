@@ -35,7 +35,9 @@ else
     chmod u+x rustup.sh
     echo "-----> Using rustup to install Rust channel $VERSION"
     RUSTUP_HOME=$RUSTUP_HOME CARGO_HOME=$CARGO_HOME ./rustup.sh -y --default-toolchain "$VERSION"
-    rm rustup.sh
+    r mrustup.sh
+    export RUSTUP_HOME=$RUSTUP_HOME
+    export CARGO_HOME=$CARGO_HOME
 fi
 if [ ! -x "$CARGO_HOME/bin/rustc" ]; then
     echo "failed: Cannot find Rust binaries at $CARGO_HOME"
